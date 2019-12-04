@@ -9,10 +9,11 @@ request({url,json:true },(error,{body}) => {
     } else if (body.error){
         callback('Unable to find location.Try another search',undefined)
     }else{
-       // const data = JSON.parse(response.body)
+       console.log(body.daily.data[0])
         callback(undefined,
            body.daily.data[0].summary +' It is currently '+body.currently.temperature+
-       ' degrees out. There is a '+body.currently.precipProbability+'% chance of rain'
+       ' degrees  with temprature high: '+ body.daily.data[0].temperatureHigh + 'degree and with temperatulre low: '+ 
+       body.daily.data[0].temperatureLow + 'degree. There is a '+body.currently.precipProbability+'% chance of rain'
         )
     }
 })
